@@ -1,0 +1,12 @@
+name: Workflow BETELGEUSE
+run-name: Flujo de trabajo BETLGEUSE
+
+on:
+  push:
+    branches: [betelgeuse]
+
+jobs:
+  BETELGEUSE:
+    uses: ./.github/actions/BETELGEUSE-Python.yml
+    with:
+      python-version: "3.10"
