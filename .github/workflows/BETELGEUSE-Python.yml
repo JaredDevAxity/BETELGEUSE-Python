@@ -28,3 +28,10 @@ jobs:
       - name: Run tox
         run: tox -e py
         working-directory: ./backend
+
+      - name: XML Fix Format
+        run: |
+          xml_file_path="coverage.xml"
+          new_filename_prefix="backend"
+          sed -i "s|filename=\"\(.*\)\"|filename=\"$new_filename_prefix\/\1\"|g" "$xml_file_path"
+        working-directory: ./backend
