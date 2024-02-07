@@ -7,6 +7,6 @@ on:
 
 jobs:
   BETELGEUSE:
-    uses: ./.github/actions/BETELGEUSE-Python.yml
+    uses: ./.github/workflows/BETELGEUSE-Python.yml
     with:
       python-version: "3.10"
