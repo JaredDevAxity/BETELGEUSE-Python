@@ -6,6 +6,9 @@ on:
       python-version:
         required: true
         type: string
+      path-base:
+        required: true
+        type: string
 
 jobs:
   Build:
@@ -23,7 +26,7 @@ jobs:
 
       - name: Install tox and any other packages
         run: pip install tox
-        working-directory: ./backend
+        working-directory: ${{ inputs.path-base }}/backend
 
   Test:
     needs: Build
@@ -41,18 +44,18 @@ jobs:
 
       - name: Install tox and any other packages
         run: pip install tox
-        working-directory: ./backend
+        working-directory: ${{ inputs.path-base }}/backend
 
       - name: Run tox
         run: tox -e py
-        working-directory: ./backend
+        working-directory: ${{ inputs.path-base }}/backend
 
       - name: XML Fix Format
         run: |
           xml_file_path="coverage.xml"
           new_filename_prefix="backend"
           sed -i "s|filename=\"\(.*\)\"|filename=\"$new_filename_prefix\/\1\"|g" "$xml_file_path"
-        working-directory: ./backend
+        working-directory: ${{ inputs.path-base }}/backend
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master

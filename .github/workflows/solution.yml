@@ -10,4 +10,5 @@ jobs:
     uses: ./.github/workflows/BETELGEUSE-Python.yml
     with:
       python-version: "3.10"
+      path-base: "."
     secrets: inherit
