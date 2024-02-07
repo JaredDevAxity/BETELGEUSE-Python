@@ -25,6 +25,15 @@ jobs:
         run: pip install tox
         working-directory: ./backend
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: ./backend/
+
+  Test:
+    runs-on: ubunt-latest
+    steps:
       - name: Run tox
         run: tox -e py
         working-directory: ./backend
