@@ -32,6 +32,7 @@ jobs:
           path: ./backend/
 
   Test:
+    needs: Build
     runs-on: ubunt-latest
     steps:
       - name: Run tox
