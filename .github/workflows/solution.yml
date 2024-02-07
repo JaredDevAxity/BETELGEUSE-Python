@@ -7,7 +7,7 @@ on:
 
 jobs:
   BETELGEUSE:
-    uses: ./.github/workflows/BETELGEUSE-Python.yml
+    uses: JaredDevAxity/AR_26_A_ARCHERNAR_ACTIONS/.github/workflows/BETELGEUSE_Python.yml@main
     with:
       python-version: "3.10"
       path-base: "."
