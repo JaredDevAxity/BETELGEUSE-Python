@@ -25,12 +25,6 @@ jobs:
         run: pip install tox
         working-directory: ./backend
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: ./
-
   Test:
     needs: Build
     runs-on: ubuntu-latest
@@ -45,11 +39,9 @@ jobs:
         with:
           python-version: ${{ inputs.python-version }}
 
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: ./
+      - name: Install tox and any other packages
+        run: pip install tox
+        working-directory: ./backend
 
       - name: Run tox
         run: tox -e py
