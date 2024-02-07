@@ -35,3 +35,9 @@ jobs:
           new_filename_prefix="backend"
           sed -i "s|filename=\"\(.*\)\"|filename=\"$new_filename_prefix\/\1\"|g" "$xml_file_path"
         working-directory: ./backend
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL  }}
