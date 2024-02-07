@@ -28,6 +28,12 @@ jobs:
         run: pip install tox
         working-directory: ${{ inputs.path-base }}/backend
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: ./
+
   Test:
     needs: Build
     runs-on: ubuntu-latest
