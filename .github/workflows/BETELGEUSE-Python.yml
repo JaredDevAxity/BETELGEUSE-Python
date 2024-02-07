@@ -33,8 +33,13 @@ jobs:
 
   Test:
     needs: Build
-    runs-on: ubunt-latest
+    runs-on: ubuntu-latest
     steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+
       - name: Run tox
         run: tox -e py
         working-directory: ./backend
