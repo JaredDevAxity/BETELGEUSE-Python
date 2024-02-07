@@ -49,6 +49,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dist
+          path: ./
 
       - name: Run tox
         run: tox -e py
